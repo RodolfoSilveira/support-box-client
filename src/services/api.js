@@ -7,7 +7,7 @@ const api = create({
 api.addAsyncRequestTransform(request => {
     const token = localStorage.getItem('token')
     if(token){
-        request.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        request.headers.common['Authorization'] = `Bearer ${token}`
     }   
 })
 
