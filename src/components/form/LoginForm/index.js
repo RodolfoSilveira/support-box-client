@@ -5,9 +5,11 @@ import {
     TextBox,
     Input,
     Icone,
-    InputButton 
+    InputButton,
+    ButtonRegister
 } from './styles'
 import MaterialIcon from 'material-icons-react'
+import { Link } from 'react-router-dom'
 
 function LoginForm() {
 
@@ -26,7 +28,12 @@ function LoginForm() {
                 </Icone>
                 <Input type='password' placeholder='Senha'/>
             </TextBox>
-                <InputButton type='button' value='Entrar'/>
+                <Link to='/home'>
+                    <InputButton type='button' value='Entrar'/>
+                </Link>
+                <Link to='/register'>
+                    <ButtonRegister>Cadastre-se</ButtonRegister>
+                </Link>
         </LoginBox>
     )
 }

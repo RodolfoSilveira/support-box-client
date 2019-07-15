@@ -52,3 +52,13 @@ export const InputButton = styled.input.attrs( props => ({
     cursor: pointer;
     margin: 12px 0;
 `
+export const ButtonRegister = styled.button`
+    width: 100%;
+    background: none;
+    border: 2px solid #526dff;
+    color: #545454;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+`
