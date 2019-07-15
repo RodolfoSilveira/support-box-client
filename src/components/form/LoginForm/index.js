@@ -18,7 +18,7 @@ function LoginForm() {
                 <Icone>
                 <MaterialIcon icon="account_circle" size={26} color='#c1c1c1'/>
                 </Icone>
-                <Input type='text' placeholder='E-mail'/>
+                <Input type='email' placeholder='E-mail'/>
             </TextBox>
             <TextBox>
                 <Icone>
