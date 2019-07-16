@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { 
     LoginBox, 
     LoginTitle, 
@@ -10,8 +10,17 @@ import {
 } from './styles'
 import MaterialIcon from 'material-icons-react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Creators } from '../../../store/ducks/auth'
 
-function LoginForm() {
+function LoginForm(props) {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    function submit() {
+        props.dispatch(Creators.authorize(email, password))
+    }
 
     return (
         <LoginBox>
@@ -20,16 +29,23 @@ function LoginForm() {
                 <Icone>
                 <MaterialIcon icon="account_circle" size={26} color='#c1c1c1'/>
                 </Icone>
-                <Input type='email' placeholder='E-mail'/>
+                <Input 
+                type='email' 
+                placeholder='E-mail' 
+                onChange={e => setEmail(e.target.value)}/>
             </TextBox>
             <TextBox>
                 <Icone>
                 <MaterialIcon icon="lock" size={26} color='#c1c1c1'/>
                 </Icone>
-                <Input type='password' placeholder='Senha'/>
+                <Input 
+                type='password' 
+                placeholder='Senha'
+                onChange={e => setPassword(e.target.value)}
+                />
             </TextBox>
                 <Link to='/home'>
-                    <InputButton type='button' value='Entrar'/>
+                    <InputButton type='button' value='Entrar' onClick={submit}/>
                 </Link>
                 <Link to='/register'>
                     <ButtonRegister>Cadastre-se</ButtonRegister>
@@ -38,4 +54,8 @@ function LoginForm() {
     )
 }
 
-export default LoginForm
+const mapStateToProps = state => ({
+    auth: state.auth.data
+});
+
+export default connect(mapStateToProps, null)(LoginForm)

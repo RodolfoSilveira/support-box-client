@@ -24,7 +24,8 @@ export const TextBox = styled.div`
 export const Input = styled.input.attrs( props => ({
     type: props.type,
     placeholder: props.placeholder,
-    value: props.value
+    value: props.value,
+    required: true
 }))`
     border: none;
     outline: none;

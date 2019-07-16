@@ -1,14 +1,12 @@
-import { create } from 'apisauce'
+import axios from 'axios'
 
-const api = create({
-    baseURL: 'http://localhost:3333/'
+const api = axios.create({
+    baseURL: 'http://localhost:3333',
 })
 
-api.addAsyncRequestTransform(request => {
-    const token = localStorage.getItem('token')
-    if(token){
-        request.headers.common['Authorization'] = `Bearer ${token}`
-    }   
-})
+const token = localStorage.getItem('token')
+if(token)
+api.defaults.headers.common['Authorization'] = `Bearer ${token}` 
+
 
 export default api

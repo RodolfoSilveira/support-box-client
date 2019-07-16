@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { 
     RegisterContainer, 
     RegisterBox, 
@@ -11,9 +11,24 @@ import {
 } from './styles'
 import MaterialIcon from 'material-icons-react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Creators } from '../../../store/ducks/register'
 
+function RegisterForm(props) {
 
-function RegisterForm() {
+    const [ name, setName ] = useState('')
+    const [ email, setEmail ] = useState('')
+    const [ cpf, setCpf ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ confirPassword, setConfirPassword ] = useState('')
+
+    function cadastrar(){
+        if(password === confirPassword){
+            props.dispatch(Creators.register(name, email, cpf, password))
+        }else{
+            alert('Confirar sua senha!')
+        }
+    }
 
     return (
         <RegisterContainer>
@@ -27,7 +42,11 @@ function RegisterForm() {
                             color='#c1c1c1'
                         />
                     </Icone>
-                    <Input type='text' placeholder='Nome'/>
+                    <Input 
+                    type='text' 
+                    placeholder='Nome'
+                    onChange={ e => setName(e.target.value)}
+                    />
                 </TextBox>
                 <TextBox>
                     <Icone>
@@ -36,7 +55,11 @@ function RegisterForm() {
                         size={26} 
                         color='#c1c1c1'/>
                     </Icone>
-                    <Input type='email' placeholder='E-mail'/>
+                    <Input 
+                    type='email' 
+                    placeholder='E-mail'
+                    onChange={e => setEmail(e.target.value)}
+                    />
                 </TextBox>
                 <TextBox>
                     <Icone>
@@ -46,7 +69,11 @@ function RegisterForm() {
                             color='#c1c1c1'
                         />
                     </Icone>
-                    <Input type='text' placeholder='CPF'/>
+                    <Input 
+                    type='text' 
+                    placeholder='CPF'
+                    onChange={e => setCpf(e.target.value)}
+                    />
                 </TextBox>
                 <TextBox>
                     <Icone>
@@ -55,7 +82,11 @@ function RegisterForm() {
                         size={26} 
                         color='#c1c1c1'/>
                     </Icone>
-                    <Input type='password' placeholder='Senha'/>
+                    <Input 
+                    type='password' 
+                    placeholder='Senha'
+                    onChange={e => setPassword(e.target.value)}
+                    />
                 </TextBox>
                 <TextBox>
                     <Icone>
@@ -64,10 +95,14 @@ function RegisterForm() {
                             size={26}
                             color='#c1c1c1'/>
                     </Icone>
-                    <Input type='password' placeholder='Confirmar Senha'/>
+                    <Input 
+                    type='password' 
+                    placeholder='Confirmar Senha'
+                    onChange={e => setConfirPassword(e.target.value)}
+                    />
                 </TextBox>
                 <Link to='/home'>
-                    <InputButton type='button' value='Cadastrar'/>
+                    <InputButton type='button' value='Cadastrar' onClick={cadastrar}/>
                 </Link>
                 <Link to='/'>
                     <ButtonBack>Cancelar</ButtonBack>
@@ -77,4 +112,8 @@ function RegisterForm() {
     )
 }
 
-export default RegisterForm
+const mapStateToProps = state => ({
+    register: state.register.data
+});
+
+export default connect(mapStateToProps, null)(RegisterForm)

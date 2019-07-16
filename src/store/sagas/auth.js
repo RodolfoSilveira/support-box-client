@@ -6,15 +6,15 @@ export function* authorize({ payload: { email, password } }){
 
     try{
 
-        const response = yield call(api.post('/authenticate'), { email, password })
-
+        const response = yield call(api.post,'/authenticate', { email, password })
+        
         const { data } = response
 
         yield put(AuthCreators.authResponse(data));
 
         localStorage.setItem('token', data.token);
 
-        yield put(AuthCreators.authSuccess(data))
+        yield put(AuthCreators.authData(data))
 
     }catch (error){
         let message;
