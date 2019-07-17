@@ -24,7 +24,7 @@ function RegisterForm(props) {
 
     function cadastrar(){
         if(password === confirPassword){
-            props.dispatch(Creators.register(name, email, cpf, password))
+            props.dispatch(Creators.register(name, email, password, cpf))
         }else{
             alert('Confirar sua senha!')
         }
