@@ -101,9 +101,7 @@ function RegisterForm(props) {
                     onChange={e => setConfirPassword(e.target.value)}
                     />
                 </TextBox>
-                <Link to='/home'>
-                    <InputButton type='button' value='Cadastrar' onClick={cadastrar}/>
-                </Link>
+                <InputButton type='button' value='Cadastrar' onClick={cadastrar}/>
                 <Link to='/'>
                     <ButtonBack>Cancelar</ButtonBack>
                 </Link>

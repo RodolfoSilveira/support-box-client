@@ -1,6 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import api from '../../services/api'
 import { Creators as RegisterCreators, Types } from '../ducks/register'
+import { push } from 'connected-react-router'
 
 export function* register({ payload: {name, email, password, cpf} }) {
 
@@ -15,6 +16,8 @@ export function* register({ payload: {name, email, password, cpf} }) {
         localStorage.setItem('token', data.token)
 
         yield put(RegisterCreators.registerData(data))
+
+        yield put(push('/home'))
         
     }catch(error){
         let message;

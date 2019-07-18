@@ -1,6 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import api from '../../services/api'
 import { Creators as AuthCreators, Types } from '../ducks/auth'
+import { push } from 'connected-react-router'
 
 export function* authorize({ payload: { email, password } }){
 
@@ -15,6 +16,8 @@ export function* authorize({ payload: { email, password } }){
         localStorage.setItem('token', data.token);
 
         yield put(AuthCreators.authData(data))
+
+        yield put(push('/home'))
 
     }catch (error){
         let message;

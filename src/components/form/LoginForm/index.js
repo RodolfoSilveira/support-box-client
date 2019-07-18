@@ -44,9 +44,7 @@ function LoginForm(props) {
                 onChange={e => setPassword(e.target.value)}
                 />
             </TextBox>
-                <Link to='/home'>
-                    <InputButton type='button' value='Entrar' onClick={submit}/>
-                </Link>
+                <InputButton type='button' value='Entrar' onClick={submit}/>
                 <Link to='/register'>
                     <ButtonRegister>Cadastre-se</ButtonRegister>
                 </Link>
