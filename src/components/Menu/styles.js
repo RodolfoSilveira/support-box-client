@@ -2,43 +2,42 @@ import styled from 'styled-components'
 
 export const Drawer = styled.div`
     grid-area: menu;
+    height: 60px; 
     background-color: #FFF;
-    box-shadow: 2px 2px 2px #e0e1e9;
+    box-shadow: 3px 3px 3px #e0e1e9;
     color: #545454;
 `
 export const Container = styled.div`
-    width: 100%;
-    padding-top: 60px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
 `
 export const Navegacao = styled.nav`
-    width: 20%;
 `
 
 export const LisItens = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
+export const BoxItem = styled.div`
+    padding: 14px;
+    border-left: 1px solid #f4f4f4;
+    border-right: 1px solid #f4f4f4;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.1);
 `
 
 export const Item = styled.li`
     list-style: none;
     padding: 0;
-    margin: 0;
-
-    height: 40px;
-    line-height: 40px;
-    padding: 0 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* margin-top: 10px; */
+    float: left;
 `
 
-export const Icone = styled.div`
-    padding-top: 5px;
-    padding-right: 30px;
+export const Icone = styled.i`
+    position: relative;
+    top: 5px;
+    right: 5px;
 ` 
