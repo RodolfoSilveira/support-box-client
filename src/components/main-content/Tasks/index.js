@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Main() {
+function Tasks() {
     return (
         <div>
-
+            <h1>Tasks</h1>
         </div>
     )
 }
 
-export default Main
+export default Tasks
