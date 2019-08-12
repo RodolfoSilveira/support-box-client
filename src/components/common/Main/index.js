@@ -10,7 +10,7 @@ function Main() {
     return (
         <MainContainer>
             <Switch>
-                <Route path='/home/dashboard' component={Dashboard}/>
+                <Route exact path='/home' component={Dashboard}/>
                 <Route path='/home/tasks' component={Tasks}/>
                 <Route path='/home/client' component={Client}/>
                 <Route path='/home/employee' component={Employee}/>
